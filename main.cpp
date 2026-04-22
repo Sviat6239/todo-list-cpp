@@ -8,6 +8,7 @@ struct todo
     int id;
     string title;
     string description;
+    bool completed;
 };
 
 int main()
@@ -18,6 +19,8 @@ int main()
 
     string title;
     string description;
+    int id;
+    bool completed;
 
     int option;
 
@@ -30,7 +33,9 @@ int main()
              << "2.Add new the todo. "
              << "3.Delete the todo. "
              << "4.Update the todo. "
-             << "5.Exit.\n>>>";
+             << "5.Mark todo as completed. "
+             << "6.Mark todo as uncompleted. "
+             << "7.Exit.\n>>>";
         cin >> option;
 
         if (option == 1)
@@ -39,7 +44,8 @@ int main()
             {
                 cout << "id: " << todos[i].id << "\n"
                      << "title: " << todos[i].title << "\n"
-                     << "description: " << todos[i].description << "\n";
+                     << "description: " << todos[i].description << "\n"
+                     << "is completed: " << todos[i].completed << "\n";
             }
         }
         else if (option == 2)
@@ -55,6 +61,7 @@ int main()
             new_todo.id = todos.size() + 1;
             new_todo.title = title;
             new_todo.description = description;
+            new_todo.completed = false;
 
             todos.push_back(new_todo);
 
@@ -62,13 +69,67 @@ int main()
         }
         else if (option == 3)
         {
+            cout << "enter an if of todo";
+            cin >> id;
+
+            bool found = false;
+
+            for (auto it = todos.begin(); it != todos.end(); ++it)
+            {
+                if (it->id == id)
+                {
+                    todos.erase(it);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                cout << "Todo not found\n";
+            }
         }
         else if (option == 4)
         {
+            cout << "enter an id of todo: ";
+            cin >> id;
+
+            todo *t = nullptr;
+
+            for (auto &item : todos)
+            {
+                if (item.id == id)
+                {
+                    t = &item;
+                    break;
+                }
+            }
+
+            if (t == nullptr)
+            {
+                cout << "Todo not found\n";
+                continue;
+            }
+
+            cout << "enter title:\n";
+            cin.ignore();
+            getline(cin, title);
+
+            cout << "enter description:\n";
+            getline(cin, description);
+
+            t->title = title;
+            t->description = description;
         }
         else if (option == 5)
         {
-            cout << "Exiting...";
+        }
+        else if (option == 6)
+        {
+        }
+        else if (option == 7)
+        {
+            cout << "Exiting..." << "\n";
             break;
         }
     }
