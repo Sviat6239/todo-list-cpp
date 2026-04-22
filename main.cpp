@@ -91,7 +91,7 @@ int main()
         }
         else if (option == 4)
         {
-            cout << "enter an id of todo: ";
+            cout << "enter an id of todo:\n>>>";
             cin >> id;
 
             todo *t = nullptr;
@@ -123,9 +123,39 @@ int main()
         }
         else if (option == 5)
         {
+            cout << "enter an id of todo:\n>>>";
+            cin >> id;
+
+            todo *t = nullptr;
+
+            for (auto &item : todos)
+            {
+                if (item.id == id)
+                {
+                    t = &item;
+                    break;
+                }
+            }
+
+            t->completed = true;
         }
         else if (option == 6)
         {
+            cout << "enter an id of todo:\n>>>";
+            cin >> id;
+
+            todo *t = nullptr;
+
+            for (auto &item : todos)
+            {
+                if (item.id == id)
+                {
+                    t = &item;
+                    break;
+                }
+            }
+
+            t->completed = false;
         }
         else if (option == 7)
         {
