@@ -42,18 +42,25 @@ int main()
         {
             for (size_t i = 0; i < todos.size(); i++)
             {
-                cout << "id: " << todos[i].id << "\n"
-                     << "title: " << todos[i].title << "\n"
-                     << "description: " << todos[i].description << "\n"
-                     << "is completed: " << todos[i].completed << "\n";
+                cout << "Id: " << todos[i].id << "\n"
+                     << "Title: " << todos[i].title << "\n"
+                     << "Description: " << todos[i].description << "\n";
+                if (todos[i].completed == 1)
+                {
+                    cout << "Is completed" << "\n";
+                }
+                else
+                {
+                    cout << "Isn`t completed" << "\n";
+                }
             }
         }
         else if (option == 2)
         {
-            cout << "enter title of your new todo:\n>>>";
+            cout << "Enter title of your new todo:\n>>>";
             cin >> title;
 
-            cout << "enter the description of your new todo:\n>>>";
+            cout << "Enter the description of your new todo:\n>>>";
             cin >> description;
 
             cout << "You have created new todo: " << title << " with description: " << description << "\n";
@@ -69,7 +76,7 @@ int main()
         }
         else if (option == 3)
         {
-            cout << "enter an if of todo";
+            cout << "Enter an id of todo:\n>>>";
             cin >> id;
 
             bool found = false;
@@ -91,7 +98,7 @@ int main()
         }
         else if (option == 4)
         {
-            cout << "enter an id of todo:\n>>>";
+            cout << "Enter an id of todo:\n>>>";
             cin >> id;
 
             todo *t = nullptr;
@@ -111,11 +118,11 @@ int main()
                 continue;
             }
 
-            cout << "enter title:\n";
+            cout << "Enter title:\n>>>";
             cin.ignore();
             getline(cin, title);
 
-            cout << "enter description:\n";
+            cout << "Enter description:\n>>>";
             getline(cin, description);
 
             t->title = title;
@@ -123,7 +130,7 @@ int main()
         }
         else if (option == 5)
         {
-            cout << "enter an id of todo:\n>>>";
+            cout << "Enter an id of todo:\n>>>";
             cin >> id;
 
             todo *t = nullptr;
@@ -141,7 +148,7 @@ int main()
         }
         else if (option == 6)
         {
-            cout << "enter an id of todo:\n>>>";
+            cout << "Enter an id of todo:\n>>>";
             cin >> id;
 
             todo *t = nullptr;
