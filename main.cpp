@@ -1,26 +1,94 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <functional>
 
 using namespace std;
 
-struct todo
+struct User
 {
     int id;
-    string title;
-    string description;
-    bool completed;
+    string name;
+    string surname;
+    string email;
+    string login;
+    string password_hash;
+    string access_token;
+    string role;
+    bool is_registered;
 };
+
+vector<User> users;
+
+hash<string> hasher;
+
+// Auth system
+
+void hash_password_func()
+{
+}
+
+void check_password_func()
+{
+}
+
+void register_func()
+{
+}
+
+void login_func()
+{
+}
+
+void logout_func()
+{
+}
+
+// Admin side
+
+void get_users()
+{
+}
+
+void get_user()
+{
+}
+
+void add_user()
+{
+}
+
+void del_user()
+{
+}
+
+void update_user()
+{
+}
+
+void patch_user()
+{
+}
+
+// main loop
 
 int main()
 {
-    vector<todo> todos;
 
-    todo new_todo;
+    string s = "secret";
 
-    string title;
-    string description;
-    int id;
-    bool completed;
+    size_t h = hasher(s);
+
+    cout << h << "\n";
+
+    User new_user;
+
+    string name;
+    string surname;
+    string email;
+    string login;
+    string password;
+    string role;
 
     int option;
 
@@ -28,148 +96,19 @@ int main()
 
     while (run == true)
     {
-        cout << "What would you do today?\n"
-             << "1.List of the todos. "
-             << "2.Add new the todo. "
-             << "3.Delete the todo. "
-             << "4.Update the todo. "
-             << "5.Mark todo as completed. "
-             << "6.Mark todo as uncompleted. "
-             << "7.Exit.\n>>>";
+        cout << "Authentification system. Choose one option:\n"
+             << "1. Login.\n"
+             << "2. Register.\n"
+             << "3. Logout. \n";
         cin >> option;
-
         if (option == 1)
         {
-            for (size_t i = 0; i < todos.size(); i++)
-            {
-                cout << "Id: " << todos[i].id << "\n"
-                     << "Title: " << todos[i].title << "\n"
-                     << "Description: " << todos[i].description << "\n";
-                if (todos[i].completed == 1)
-                {
-                    cout << "Is completed" << "\n";
-                }
-                else
-                {
-                    cout << "Isn`t completed" << "\n";
-                }
-            }
         }
         else if (option == 2)
         {
-            cout << "Enter title of your new todo:\n>>>";
-            cin >> title;
-
-            cout << "Enter the description of your new todo:\n>>>";
-            cin >> description;
-
-            cout << "You have created new todo: " << title << " with description: " << description << "\n";
-
-            new_todo.id = todos.size() + 1;
-            new_todo.title = title;
-            new_todo.description = description;
-            new_todo.completed = false;
-
-            todos.push_back(new_todo);
-
-            continue;
         }
         else if (option == 3)
         {
-            cout << "Enter an id of todo:\n>>>";
-            cin >> id;
-
-            bool found = false;
-
-            for (auto it = todos.begin(); it != todos.end(); ++it)
-            {
-                if (it->id == id)
-                {
-                    todos.erase(it);
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found)
-            {
-                cout << "Todo not found\n";
-            }
-        }
-        else if (option == 4)
-        {
-            cout << "Enter an id of todo:\n>>>";
-            cin >> id;
-
-            todo *t = nullptr;
-
-            for (auto &item : todos)
-            {
-                if (item.id == id)
-                {
-                    t = &item;
-                    break;
-                }
-            }
-
-            if (t == nullptr)
-            {
-                cout << "Todo not found\n";
-                continue;
-            }
-
-            cout << "Enter title:\n>>>";
-            cin.ignore();
-            getline(cin, title);
-
-            cout << "Enter description:\n>>>";
-            getline(cin, description);
-
-            t->title = title;
-            t->description = description;
-        }
-        else if (option == 5)
-        {
-            cout << "Enter an id of todo:\n>>>";
-            cin >> id;
-
-            todo *t = nullptr;
-
-            for (auto &item : todos)
-            {
-                if (item.id == id)
-                {
-                    t = &item;
-                    break;
-                }
-            }
-
-            t->completed = true;
-        }
-        else if (option == 6)
-        {
-            cout << "Enter an id of todo:\n>>>";
-            cin >> id;
-
-            todo *t = nullptr;
-
-            for (auto &item : todos)
-            {
-                if (item.id == id)
-                {
-                    t = &item;
-                    break;
-                }
-            }
-
-            t->completed = false;
-        }
-        else if (option == 7)
-        {
-            cout << "Exiting..." << "\n";
-            break;
         }
     }
-
-    return 0;
 }
